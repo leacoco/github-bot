@@ -1,0 +1,16 @@
+name: Github Actions Demo
+on: [push]
+jobs:
+  Explore-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Event name was ${{ github.event_name }} event"
+      - run: echo "Runner name was ${{ runner.os }} "
+      - run: echo "branch name is  ${{ github.ref }} and repo name is ${{ github.repository }}"
+      - run: echo "Workspace name is  ${{ github.workspace }} and repo name is ${{ github.repository }}"
+      - name: check out repositoy ${{ github.repository }}
+        uses: actions/checkout@v2
+      - name: List files in Repository ${{ github.repository }}
+        run: |
+          ls -al ${{ github.workspace }}
+      - run: echo "This job completed with status ${{ job.status }}"
